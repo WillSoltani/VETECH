@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeTech Dental</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            width: 100%;
+        }
+
+        .main-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 20px;
+            background-color: white;
+            position: relative;
+            height: 50px;
+        }
+
+        .logo {
+            font-size: 70px;
+            font-weight: bold;
+            font-family: 'cursive', Snell Roundhand;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        nav {
+            margin-left: auto;
+            display: flex;
+            gap: 15px;
+            position: absolute;
+            right: 20px;
+            align-items: center;
+            height: 100%;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+        }
+
+        .warranty-message {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #f0f0f0;
+            font-size: 18px;
+            color: #333;
+            position: relative;
+            height: 50px;
+        }
+
+        #message {
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
+            position: absolute;
+            width: 100%;
+            left: 0;
+        }
+
+        .banner {
+            background: url('./banner-image.jpg') no-repeat center center/cover;
+            height: 960px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .banner h1 {
+            font-size: 44px;
+            margin-bottom: 40px;
+            /* Adjust this to move vertically */
+            margin-left: 10px;
+            margin-top: -180px;
+            /* Adjust this to move horizontally */
+            color: rgb(181, 150, 92);
+            /* Vibrant teal color */
+
+        }
+
+        .banner p {
+            font-size: 22px;
+            margin: 50px 0;
+            color: rgb(181, 150, 92);
+            /* Vibrant teal color */
+
+        }
+
+        .banner button {
+            background: transparent;
+            border: 2px solid white;
+            padding: 15px 30px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .products {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .products h2 {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .product-carousel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .product-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .product {
+            flex: 0 0 33.33%;
+            max-width: 33.33%;
+            box-sizing: border-box;
+            padding: 0 10px;
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-height: 300px;
+            object-fit: contain;
+        }
+
+        .carousel-arrow {
+            cursor: pointer;
+            font-size: 24px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            user-select: none;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .carousel-arrow.left {
+            left: 10px;
+        }
+
+        .carousel-arrow.right {
+            right: 10px;
+        }
+
+        .services {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 40px 20px;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+
+        .service {
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        .service img {
+            width: 200px;
+            height: 200px;
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        .service p {
+            font-size: 18px;
+        }
+
+        .banner-bottom {
+            background: url('./banner2.jpg') no-repeat center center/cover;
+            height: 1000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .banner-bottom-content h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            margin-left: 70px;
+            margin-top: -100px;
+            color: white;
+        }
+
+        .banner-bottom-content p {
+            font-size: 24px;
+            margin: 10px 0 0;
+            margin-left: 20px;
+        }
+
+        .most-popular {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .most-popular h2 {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .popular-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+        }
+
+        .item {
+            text-align: center;
+            flex: 0 0 30%;
+            position: relative;
+        }
+
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            max-width: 500px;
+            /* Adjust the maximum width */
+            max-height: 500px;
+            /* Adjust the maximum height */
+            object-fit: cover;
+            /* Ensure the image covers the container */
+            transition: filter 0.3s ease, transform 0.3s ease;
+            border: 2px solid #ccc;
+            /* Add border */
+            padding: 5px;
+            /* Add padding for the border */
+            box-sizing: border-box;
+            /* Include padding and border in the element's total width and height */
+        }
+
+        .image-container img.blurred {
+            filter: blur(5px);
+        }
+
+        .description {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            display: none;
+            white-space: normal;
+            text-align: left;
+            box-sizing: border-box;
+            /* Ensure padding is included in width and height */
+        }
+
+        .item ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .item ul li {
+            margin: 5px 0;
+        }
+
+        .item ul li a {
+            text-decoration: none;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .item ul li a:hover {
+            color: #333;
+            font-size: 110%;
+            font-weight: bold;
+        }
+
+        .typing {
+            border-right: 2px solid white;
+            white-space: normal;
+            overflow: hidden;
+            display: inline-block;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent;
+            }
+
+            50% {
+                border-color: white;
+            }
+        }
+
+        .thank-you-message {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .thank-you-message h2 {
+            font-size: 70px;
+            /* Same size as the top of the page */
+            font-family: 'cursive', Snell Roundhand;
+            color: black;
+            /* Sunshine color */
+        }
+
+        footer {
+            background: #f0f0f0;
+            padding: 20px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-wrap: wrap;
+            position: relative;
+            /* Ensure footer has relative positioning */
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+            /* Space for the team photo */
+        }
+
+        .footer-copyright {
+            text-align: center;
+            font-size: 14px;
+            color: black;
+            /* Ensure text color is black */
+            width: 100%;
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            background-color: #f0f0f0;
+            /* Match the footer background color for clarity */
+            padding: 10px 0;
+            /* Add padding for spacing */
+        }
+
+        .footer-column {
+            padding: 10px;
+        }
+
+        .footer-column h3 {
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            display: block;
+            margin: 5px 0;
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+        }
+
+        .map-box {
+            max-width: 20%;
+            /* Adjust size of the map */
+            flex: 1;
+            margin-right: 20px;
+            /* Slight margin from the footer */
+        }
+
+        .map-box img {
+            width: 100%;
+            height: auto;
+            border: solid;
+            border-width: 5px;
+            border-color: bisque;
+        }
+
+        .team-box {
+            max-width: 20%;
+            flex: 1;
+            text-align: center;
+            margin: 0 10%;
+            display: flex;
+            justify-content: center;
+            /* Adjust size of the team photo box */
+        }
+
+        .team-box img {
+            width: 150%;
+            height: auto;
+            border: none;
+        }
+
+        .about-contact-box {
+            flex: 1;
+            text-align: center;
+            margin-top: -50px;
+            /* Align to the right */
+            padding: 10px;
+        }
+
+        .email-addresses {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding-top: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease-out;
+            background-color: #f0f0f0;
+            /* Set a background color for readability */
+            padding: 10px;
+            /* Add padding for spacing */
+            color: black;
+            /* Ensure text color is black */
+        }
+
+        .email-addresses.show {
+            display: flex;
+            opacity: 1;
+            border: solid;
+        }
+
+        .email-addresses p {
+            margin: 5px 0;
+            font-size: 18px;
+            color: black;
+            /* Ensure font color is black */
+        }
+
+        .email-addresses a {
+            color: black;
+            /* Ensure link color is black */
+            text-decoration: none;
+            display: block;
+            /* Ensure the email link is on a new line */
+            margin-bottom: 20px;
+            /* Add some spacing between the description and email */
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .phone-numbers {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding-top: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease-out;
+            background-color: #f0f0f0;
+            padding: 10px;
+        }
+
+        .phone-numbers.show {
+            display: flex;
+            opacity: 1;
+            border: solid;
+        }
+
+        .phone-numbers p {
+            margin: 5px 0;
+            font-size: 18px;
+            color: black;
+        }
+
+        .phone-numbers span {
+            display: block;
+            color: black;
+            margin-top: 5px;
+        }
+
+        .location {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding-top: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease-out;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border: solid black;
+            /* Add black solid border */
+        }
+
+        .location.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .location p {
+            margin: 5px 0;
+            font-size: 18px;
+            color: black;
+        }
+
+        .location span {
+            display: block;
+            color: black;
+            margin-top: 5px;
+        }
+
+        .contact-box {
+            text-align: center;
+            margin-bottom: 20px;
+            /* Adjust margin to position higher */
+        }
+
+        .contact-box h3 {
+            margin-bottom: 10px;
+        }
+
+        .contact-box a {
+            display: block;
+            margin: 5px 0;
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        .email-addresses,
+        .phone-numbers,
+        .location {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding-top: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease-out;
+            background-color: #f0f0f0;
+            padding: 10px;
+        }
+
+        .email-addresses.show,
+        .phone-numbers.show,
+        .location.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .email-addresses p,
+        .phone-numbers p,
+        .location p {
+            margin: 5px 0;
+            font-size: 18px;
+            color: black;
+        }
+
+        .email-addresses a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .location {
+            border: solid black;
+            /* Add black solid border */
+        }
+
+        @media screen and (max-width: 768px) {
+            .main-header {
+                flex-direction: column;
+                height: auto;
+                padding: 10px;
+            }
+
+            .logo {
+                position: static;
+                transform: none;
+                font-size: 50px;
+            }
+
+            nav {
+                position: static;
+                margin: 10px 0 0;
+                gap: 10px;
+                flex-direction: column;
+            }
+
+            .banner {
+                height: 500px;
+                background-size: cover;
+                padding: 20px;
+            }
+
+            .banner h1 {
+                font-size: 32px;
+                margin-top: -100px;
+            }
+
+            .banner p {
+                font-size: 18px;
+                margin: 20px 0;
+            }
+
+            .products,
+            .most-popular {
+                padding: 20px;
+            }
+
+            .product-carousel {
+                width: 100%;
+            }
+
+            .product {
+                flex: 0 0 100%;
+                max-width: 100%;
+                padding: 0 5px;
+            }
+
+            .carousel-arrow {
+                font-size: 18px;
+                padding: 5px;
+            }
+
+            .services {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .service img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .service p {
+                font-size: 16px;
+            }
+
+            .banner-bottom {
+                height: 500px;
+            }
+
+            .banner-bottom-content h1 {
+                font-size: 32px;
+                margin-top: -50px;
+                margin-left: 0;
+            }
+
+            .banner-bottom-content p {
+                font-size: 18px;
+                margin-left: 0;
+            }
+
+            .popular-items {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .item {
+                flex: 0 0 100%;
+            }
+
+            .image-container img {
+                max-width: 100%;
+                max-height: 300px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .map-box,
+            .team-box {
+                max-width: 100%;
+                margin: 0;
+            }
+
+            .team-box img {
+                width: 100%;
+            }
+
+            .contact-box {
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="warranty-message">
+            <p id="message"></p>
+        </div>
+        <div class="main-header">
+            <div class="logo">VeTech</div>
+            <nav>
+                <a href="#" id="products-link">Products</a>
+                <a href="#" id="services-link">Services</a>
+                <a href="#" id="who-we-are-link">Who We Are</a>
+                <a href="#" id="contact-us-link">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="banner">
+            <div class="banner-content">
+                <h1>Precision. Quality. Smile</h1>
+                <p>Crafting exceptional dental solutions with precision and care,</p>
+                <p> transforming smiles one at a time.</p>
+            </div>
+        </section>
+        <section class="products">
+            <h2>Perfection in Every Bite</h2>
+            <div class="product-carousel">
+                <div class="carousel-arrow left" onclick="prevProduct()">&#10094;</div>
+                <div class="product-track">
+                    <div class="product">
+                        <img src="./valplast.JPG" alt="Valplast">
+                        <h3>Valplast Dentures</h3>
+                    </div>
+                    <div class="product">
+                        <img src="./vitallium2000.PNG" alt="Vitallium 2000">
+                        <h3>Vitallium 2000 Frameworks</h3>
+                    </div>
+                    <div class="product">
+                        <img src="./Acrylic.jpg" alt="Acrylic Denture">
+                        <h3>Acrylic Dentures</h3>
+                    </div>
+                    <div class="product">
+                        <img src="./Nightgaurd.JPG" alt="Night/Day Guards">
+                        <h3>Night/Day Guards</h3>
+                    </div>
+                    <div class="product">
+                        <img src="./SMaintainer.jpg" alt="SpaceMaintainer">
+                        <h3>Space Maintainers</h3>
+                    </div>
+                    <div class="product">
+                        <img src="./Crowns.JPG" alt="Crown">
+                        <h3>Crowns</h3>
+                    </div>
+                    <div class="product">
+                        <img src="./Implant.jpg" alt="Implant">
+                        <h3>Implants</h3>
+                    </div>
+                </div>
+                <div class="carousel-arrow right" onclick="nextProduct()">&#10095;</div>
+            </div>
+        </section>
+        <section class="services">
+            <div class="service">
+                <img src="./Pickup.jpg" alt="Free Pick-up, Free Delivery">
+                <p>Free Pick-up, Free Delivery</p>
+            </div>
+            <div class="service">
+                <img src="./Repairs.jpg" alt="Easy Repair Services">
+                <p>Easy Repair Services</p>
+            </div>
+            <div class="service">
+                <img src="./Warranty.jpg" alt="1 Year Product Warranty">
+                <p>1 Year Product Warranty</p>
+            </div>
+        </section>
+        <section class="most-popular">
+            <h2>Products</h2>
+            <div class="popular-items">
+                <div class="item">
+                    <div class="image-container">
+                        <img src="./denture.jpg" alt="Dentures">
+                        <div class="description" id="dentures-description"></div>
+                    </div>
+                    <h3>Dentures</h3>
+                    <ul>
+                        <li><a href="#"
+                                onclick="showDescription(event, 'dentures', 'Full Dentures: High-quality, full-mouth dentures designed for comfort and durability. Our full dentures provide a natural look and feel, restoring both function and aesthetics. Crafted from durable materials, they ensure a secure fit and long-lasting performance. With our meticulous attention to detail, these dentures offer a reliable solution for those needing complete dental replacement. Call us and ask for Victor for more information.')">Full
+                                Dentures</a></li>
+                        <li><a href="#"
+                                onclick="showDescription(event, 'dentures', 'Partial Dentures: Custom-fitted partial dentures to replace multiple missing teeth. These dentures blend seamlessly with your natural teeth, offering a comfortable and secure fit. Made from high-quality materials, they mimic the appearance of natural teeth and gums, providing a discreet and effective solution. With precise fittings, you can speak, eat, and smile confidently. Call us and ask for Victor for more information.')">Partial
+                                Dentures</a></li>
+                        <li><a href="#"
+                                onclick="showDescription(event, 'dentures', 'Valplast Dentures: Flexible and lightweight dentures for a natural feel. Valplast dentures are known for their durability and comfort, making them a popular choice for partial dentures. These dentures offer excellent aesthetics and functionality, providing a comfortable and secure fit. Ideal for those seeking a flexible alternative, Valplast dentures are a reliable choice. Call us and ask for Victor for more information.')">Valplast
+                                Dentures</a></li>
+                        <li><a href="#"
+                                onclick="showDescription(event, 'dentures', 'Acrylic Dentures: Durable and aesthetically pleasing acrylic dentures. These dentures are designed to mimic the appearance of natural teeth and gums, providing a reliable and attractive solution. With their sturdy construction, they offer long-lasting performance and comfort. Acrylic dentures are an excellent choice for those seeking a balance of durability and aesthetics. Call us and ask for Victor for more information.')">Acrylic
+                                Dentures</a></li>
+                        <li><a href="#"
+                                onclick="showDescription(event, 'dentures', 'Cast Framed Dentures: Sturdy and reliable dentures with a metal frame. These dentures offer enhanced strength and stability, making them an excellent choice for long-term use. The metal framework ensures a secure fit, while the design mimics natural teeth for a pleasing appearance. Cast framed dentures provide a robust solution for those needing extra durability. Call us and ask for Gilbert for more information.')">Cast
+                                Framed Dentures</a></li>
+                        <li><a href="#"
+                                onclick="showDescription(event, 'dentures', 'Immediate Dentures: Dentures that are placed immediately after teeth extraction. These dentures help maintain your smile and function while your gums heal, providing an instant solution. Designed for immediate wear, they ensure you dont have to go without teeth during the healing process. Immediate dentures are a convenient option for maintaining appearance and functionality. Call us and ask for Victor for more information')">Immediate
+                                Dentures</a></li>
+                        <li><a href="#"
+                                onclick="showDescription(event, 'dentures', 'Custom Trays: Personalized trays for optimal denture fitting. These trays ensure a precise fit for your dentures, enhancing comfort and functionality. Custom trays are designed to hold your dentures securely in place, making adjustments easier and more accurate. They are essential for achieving the best possible fit and comfort for your dentures. Call us and ask for Victor for more information.')">Custom
+                                Trays</a></li>
+                        <li><a href="#"
+                                onclick="showDescription(event, 'dentures', 'Soft/Hard Relines: Relining services for improved denture comfort. Whether you need a soft or hard reline, our services can help adjust your dentures for a better fit. Relines are necessary when dentures become loose over time due to changes in the gums and bone structure. Our relining process ensures your dentures remain comfortable and functional. Call us and ask for Victor for more information.')">Soft/Hard
+                                Relines</a></li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <div class="image-container">
+                        <img src="./NG.jpg" alt="Night Guards">
+                        <div class="description" id="nightguards-description"></div>
+                    </div>
+                    <h3>Night Guards</h3>
+                    <ul>
+                        <li><a href="#"
+                                onclick="showDescription(event, 'nightguards', 'Thermoflex Night Guards: Heat-moldable for a perfect fit. These night guards provide excellent protection against teeth grinding and clenching, ensuring a comfortable and custom fit. Thermoflex night guards are designed to adapt to the shape of your teeth, offering superior protection and comfort. They are an effective solution for preventing damage caused by bruxism. Call us and ask for Michael for more information.')">Thermoflex
+                                Nightguards</a></li>
+                        <li><a href="#"
+                                onclick="showDescription(event, 'nightguards', 'Clearflex Night Guards: Transparent and comfortable for nighttime use. These night guards are designed to be discreet and effective, offering a clear solution for teeth grinding. Clearflex night guards provide a comfortable fit and are nearly invisible, making them a preferred choice for many users. They offer reliable protection without compromising aesthetics. Call us and ask for Michael for more information.')">Clearflex
+                                Night Guards</a></li>
+                        <li><a href="#"
+                                onclick="showDescription(event, 'nightguards', 'Proform Night Guards: Professional-grade protection for teeth grinding. These night guards are crafted to offer maximum durability and protection, suitable for heavy grinders. Proform night guards provide a secure fit and are designed to withstand significant wear and tear. They are ideal for those who require robust and long-lasting protection. Call us and ask for Michael for more information.')">Proform
+                                Night Guards</a></li>
+                        <li><a href="#"
+                                onclick="showDescription(event, 'nightguards', 'Soft Night Guards: Comfortable and flexible night guards. These guards provide a gentle yet effective solution for teeth grinding, ideal for those with sensitive gums. Soft night guards are designed to be both protective and comfortable, ensuring a good nights sleep without discomfort. They are suitable for mild to moderate grinders. Call us and ask for Michael for more information.')">Soft
+                                Night Guards</a></li>
+                        <li><a href="#"
+                                onclick="showDescription(event, 'nightguards', 'Hard Night Guards: Durable and sturdy night guards for severe grinding. These night guards offer robust protection for those who experience significant teeth grinding. Hard night guards are designed to be strong and resilient, providing long-term protection and durability. They are ideal for those with severe bruxism. Call us and ask for Michael for more information.')">Hard
+                                Night Guards</a></li>
+                        <li><a href="#"
+                                onclick="showDescription(event, 'nightguards', 'Day Guards: Protection for teeth grinding during the day. These guards are designed for discreet use during daytime activities, ensuring continuous protection. Day guards are comfortable and unobtrusive, allowing you to go about your daily routine without discomfort. They provide effective protection against grinding and clenching. Call us and ask for Michael for more information.')">Day
+                                Guards</a></li>
+                        <li><a href="#"
+                                onclick="showDescription(event, 'nightguards', 'Essix Retainers: Clear retainers for maintaining teeth alignment. These retainers are nearly invisible and provide an effective way to keep your teeth in place after orthodontic treatment. Essix retainers are comfortable and easy to wear, making them a popular choice for post-treatment maintenance. They help ensure your teeth stay aligned and healthy. Call us and ask for Michael for more information.')">Essix
+                                Retainers</a></li>
+                        <li><a href="#"
+                                onclick="showDescription(event, 'nightguards', 'Bleaching Trays: Custom trays for teeth whitening. These trays are designed to hold whitening gel against your teeth, providing a convenient and effective way to achieve a brighter smile. Bleaching trays ensure even distribution of the whitening gel, enhancing the effectiveness of the treatment. They are an easy and efficient solution for at-home teeth whitening. Call us and ask for Michael for more information.')">Bleaching
+                                Trays</a></li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <div class="image-container">
+                        <img src="./tooth.jpg" alt="Single Tooth">
+                        <div class="description" id="single-tooth-description"></div>
+                    </div>
+                    <h3>Single Tooth</h3>
+                    <ul>
+                        <li><a href="#"
+                                onclick="showDescription(event, 'single-tooth', 'Crowns: Durable crowns to restore the function and appearance of a damaged tooth. Our crowns are custom-made to match your natural teeth, providing a seamless and strong restoration. Crowns are an excellent solution for protecting and strengthening damaged teeth while restoring their appearance. Contact us and talk to the receptionist for more information.')">Crowns</a>
+                        </li>
+                        <li><a href="#"
+                                onclick="showDescription(event, 'single-tooth', 'Bridges: Effective solutions to replace one or more missing teeth. Our dental bridges are designed to close gaps and restore your smile, ensuring a natural look and feel. Bridges are a reliable option for maintaining dental function and aesthetics, providing support for surrounding teeth. Contact us and talk to the receptionist for more information.')">Bridges</a>
+                        </li>
+                        <li><a href="#"
+                                onclick="showDescription(event, 'single-tooth', 'Implants: Permanent and stable solution for missing teeth. Dental implants offer a long-term replacement option that looks, feels, and functions like natural teeth. Implants provide a secure and durable foundation for replacement teeth, ensuring stability and comfort. They are an ideal solution for those seeking a permanent restoration. Contact us and talk to the receptionist for more information.')">Implants</a>
+                        </li>
+                        <li><a href="#"
+                                onclick="showDescription(event, 'single-tooth', 'Space Maintainers: Devices to keep space open for permanent teeth. These appliances are used to maintain space in your mouth until permanent teeth grow in, preventing future dental issues. Space maintainers are essential for guiding the proper development of your dental structure. They help ensure that there is enough room for permanent teeth to come in correctly. Contact us and talk to the receptionist for more information.')">Space
+                                Maintainers</a></li>
+                        <li><a href="#"
+                                onclick="showDescription(event, 'single-tooth', 'Tooth Extraction: Safe and efficient removal of teeth.')">Tooth
+                                Extraction</a></li>
+                        <li><a href="#"
+                                onclick="showDescription(event, 'single-tooth', 'Tooth Addition: Adding a tooth to an existing denture. This service is ideal for those who have lost an additional tooth and need to modify their current dentures. Our experts carefully match the new tooth to your existing denture, ensuring a seamless and natural look. Tooth addition is a cost-effective and efficient solution for maintaining the functionality and appearance of your dentures. Contact us and talk to the receptionist for more information.')">Tooth
+                                Addition</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="banner-bottom">
+            <div class="banner-bottom-content">
+                <h1>Your Smile, Our Mission</h1>
+                <p>VeTech Dental</p>
+            </div>
+        </section>
+        <footer>
+            <div class="thank-you-message">
+                <h2>Thank you for choosing us.</h2>
+            </div>
+            <div class="footer-content">
+                <!-- Google Map Box -->
+                <div class="footer-column map-box">
+                    <a href="https://www.google.com/maps/place/Vetech+Dental+Laboratories+Ltd/@49.1914446,-123.084042,17z/data=!4m15!1m8!3m7!1s0x548675a7ed3e0f85:0x7e64c67bad235a60!2sVetech+Dental+Laboratories+Ltd!8m2!3d49.1914446!4d-123.084042!10e1!16s%2Fg%2F1tdqzdpn!3m5!1s0x548675a7ed3e0f85:0x7e64c67bad235a60!8m2!3d49.1914446!4d-123.084042!16s%2Fg%2F1tdqzdpn?entry=ttu"
+                        target="_blank">
+                        <img src="./map.jpg" alt="Our Location on Google Maps">
+                    </a>
+                </div>
+                <!-- Team Photo -->
+                <div class="footer-column team-box">
+                    <img src="./team.jpg" alt="Our Team">
+                </div>
+                <!-- Contact Us -->
+                <div class="footer-column contact-box">
+                    <h3>Contact Us</h3>
+                    <div class="contact-detail">
+                        <h4>Email</h4>
+                        <p>General Inquiries: <a href="mailto:Vetechdental@outlook.com">Vetechdental@outlook.ca</a></p>
+                        <p>Technical Denture Related Questions: <a
+                                href="mailto:Victor@vetechdental.com">Victor@vetechdental.com</a></p>
+                        <p>Technical Framework Related Questions: <a
+                                href="mailto:Gilbert@vetechdental.com">Gilbert@vetechdental.com</a></p>
+                        <p>Technical Nightguard Related Questions: <a
+                                href="mailto:Michael@vetechdental.com">Michael@vetechdental.com</a></p>
+                        <p>Jobs: <a href="mailto:Jobs@vetechdental.com">Jobs@vetechdental.com</a></p>
+                    </div>
+                    <div class="contact-detail">
+                        <h4>Phone</h4>
+                        <p>General Inquiries: <span>+1 604-821-1038</span></p>
+                    </div>
+                    <div class="contact-detail">
+                        <h4>Location</h4>
+                        <p>Our Address: <span>12551 Vickers Way 210 V, Richmond, BC V6V 1J2</span></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Small Footer Copyright Notice -->
+            <div class="footer-copyright">
+                <p>&copy; 2024 VeTech Dental. All rights reserved.</p>
+            </div>
+        </footer>
+    </main>
+    <script>
+        document.getElementById('products-link').addEventListener('click', function (event) {
+            event.preventDefault();
+            smoothScroll('.most-popular', 1000); // 1000 milliseconds for 1-second duration
+        });
+
+        document.getElementById('services-link').addEventListener('click', function (event) {
+            event.preventDefault();
+            smoothScroll('.most-popular', 1000); // 1000 milliseconds for 1-second duration
+        });
+
+        document.getElementById('who-we-are-link').addEventListener('click', function (event) {
+            event.preventDefault();
+            smoothScroll('footer', 1000); // Scroll to "Who We Are" section
+        });
+
+        document.getElementById('contact-us-link').addEventListener('click', function (event) {
+            event.preventDefault();
+            smoothScroll('footer', 1000); // Scroll to footer content
+        });
+
+        function smoothScroll(target, duration) {
+            var targetElement = document.querySelector(target);
+            var targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+            var startPosition = window.pageYOffset;
+            var distance = targetPosition - startPosition;
+            var startTime = null;
+
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                var timeElapsed = currentTime - startTime;
+                var run = ease(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                if (timeElapsed < duration) requestAnimationFrame(animation);
+            }
+
+            function ease(t, b, c, d) {
+                t /= d / 2;
+                if (t < 1) return c / 2 * t * t + b;
+                t--;
+                return -c / 2 * (t * (t - 2) - 1) + b;
+            }
+
+            requestAnimationFrame(animation);
+        }
+
+        function typeText(element, text, delay = 50, callback) {
+            element.innerHTML = "";
+            let index = 0;
+
+            function type() {
+                if (index < text.length) {
+                    element.innerHTML += text.charAt(index);
+                    index++;
+                    setTimeout(type, delay);
+                } else {
+                    callback();
+                }
+            }
+            type();
+        }
+
+        function showDescription(event, type, text) {
+            event.preventDefault(); // Prevent the default anchor behavior
+            const imageContainer = document.querySelector(`#${type}-description`).parentElement;
+            const image = document.querySelector(`#${type}-description`).previousElementSibling;
+            const description = document.querySelector(`#${type}-description`);
+
+            image.classList.add('blurred');
+            description.style.display = 'flex'; // Change display to flex to show the description
+            description.style.width = `${image.clientWidth}px`; // Match width of image
+            description.style.height = `${image.clientHeight}px`; // Match height of image
+            description.style.left = '0'; // Ensure the box is aligned properly
+            description.style.top = '0'; // Ensure the box is aligned properly
+
+            // Start the typing animation
+            typeText(description, text, 50, () => {
+                // Remove the description 20 seconds after typing finishes
+                setTimeout(() => {
+                    image.classList.remove('blurred');
+                    description.style.display = 'none';
+                }, 20000); // 20 seconds
+            });
+        }
+
+        let currentProductIndex = 0;
+        const products = document.querySelectorAll('.product-track .product');
+        const totalProducts = products.length;
+        const productsToShow = 3;
+
+        function showProducts() {
+            const productTrack = document.querySelector('.product-track');
+            const productWidth = products[0].clientWidth;
+            const offset = -currentProductIndex * productWidth;
+            productTrack.style.transform = `translateX(${offset}px)`;
+        }
+
+        function nextProduct() {
+            if (currentProductIndex < totalProducts - productsToShow) {
+                currentProductIndex++;
+            } else {
+                currentProductIndex = 0; // Reset to the first product when reaching the end
+            }
+            showProducts();
+        }
+
+        function prevProduct() {
+            if (currentProductIndex > 0) {
+                currentProductIndex--;
+            } else {
+                currentProductIndex = totalProducts - productsToShow; // Move to the last product when at the beginning
+            }
+            showProducts();
+        }
+
+        document.addEventListener("DOMContentLoaded", showProducts);
+
+        // Automatically activate the right arrow every 4 seconds
+        setInterval(nextProduct, 4000);
+
+        const messages = [
+            "1 Year Warranty on Dentures",
+            "6 Months Warranty on Night Guards",
+            "Free Pickups and Deliveries"
+        ];
+
+        let currentMessageIndex = 0;
+        const messageElement = document.getElementById("message");
+
+        function showNextMessage() {
+            // Fade out the message
+            messageElement.style.opacity = 0;
+
+            setTimeout(() => {
+                // Change the message
+                messageElement.textContent = messages[currentMessageIndex];
+                currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+
+                // Fade in the message
+                messageElement.style.opacity = 1;
+            }, 1000); // Wait for the fade-out transition to complete
+        }
+
+        setInterval(showNextMessage, 5000); // Change message every 5 seconds
+
+        document.addEventListener("DOMContentLoaded", showNextMessage); // Show the first message immediately
+
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel-slide');
+            if (index >= slides.length) currentSlide = 0;
+            if (index < 0) currentSlide = slides.length - 1;
+            slides.forEach((slide, idx) => {
+                slide.style.display = (idx === currentSlide) ? 'block' : 'none';
+            });
+        }
+
+        function nextSlide() {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlide(currentSlide);
+        });
+    </script>
+</body>
+
+</html>
