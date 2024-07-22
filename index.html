@@ -87,7 +87,7 @@
             margin-left: 10px;
             margin-top: -180px;
             /* Adjust this to move horizontally */
-            color: rgb(181, 150, 92);
+            color: black;
             /* Vibrant teal color */
 
         }
@@ -95,7 +95,7 @@
         .banner p {
             font-size: 22px;
             margin: 50px 0;
-            color: rgb(181, 150, 92);
+            color: black;
             /* Vibrant teal color */
 
         }
@@ -634,11 +634,21 @@
                 padding: 10px;
             }
 
-            .logo {
-                position: static;
-                transform: none;
-                font-size: 50px;
-            }
+        .logo {
+            font-size: 70px;
+            font-weight: bold;
+            font-family: 'cursive', Snell Roundhand;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .logo-image {
+            width: 200px;
+            /* Adjust size as needed */
+            height: auto;
+            margin-top: 20px;
+        }
 
             nav {
                 position: static;
@@ -756,7 +766,9 @@
             <p id="message"></p>
         </div>
         <div class="main-header">
-            <div class="logo">VeTech</div>
+            <div class="logo">
+                <img src="./VetechLogo.jpg" alt="VeTech Logo" class="logo-image">
+            </div>
             <nav>
                 <a href="#" id="products-link">Products</a>
                 <a href="#" id="services-link">Services</a>
@@ -770,8 +782,6 @@
         <section class="banner">
             <div class="banner-content">
                 <h1>Precision. Quality. Smile</h1>
-                <p>Crafting exceptional dental solutions with precision and care,</p>
-                <p> transforming smiles one at a time.</p>
             </div>
         </section>
         <section class="products">
