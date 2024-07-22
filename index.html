@@ -16,42 +16,7 @@
         header {
             width: 100%;
         }
-
-        .main-header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px 20px;
-            background-color: white;
-            position: relative;
-            height: 50px;
-        }
-
-        .logo {
-            font-size: 70px;
-            font-weight: bold;
-            font-family: 'cursive', Snell Roundhand;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        nav {
-            margin-left: auto;
-            display: flex;
-            gap: 15px;
-            position: absolute;
-            right: 20px;
-            align-items: center;
-            height: 100%;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: black;
-            font-size: 18px;
-        }
-
+        
         .warranty-message {
             text-align: center;
             padding: 10px 0;
@@ -69,6 +34,41 @@
             width: 100%;
             left: 0;
         }
+
+        .main-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 20px;
+            background-color: white;
+            position: relative;
+            height: auto; /* Adjust height to auto */
+            flex-wrap: wrap; /* Allow wrapping */
+        }
+
+        .logo img {
+            height: 50px; /* Adjust the height as needed */
+            width: auto;
+            max-width: 150px; /* Adjust the max width as needed */
+        }
+
+        nav {
+            margin-left: auto;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            height: 100%;
+            flex-wrap: wrap;
+            justify-content: center; /* Center the nav links */
+        }
+
+        nav a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+        }
+
+
 
         .banner {
             background: url('./banner-image.jpg') no-repeat center center/cover;
@@ -630,15 +630,18 @@
         @media screen and (max-width: 768px) {
             .main-header {
                 flex-direction: column;
-                height: auto;
+                align-items: center;
                 padding: 10px;
             }
 
+            .logo {
+                order: -1; /* Move the logo to the top */
+                margin-bottom: 10px; /* Add space below the logo */
+            }
+
             .logo img {
-                width: 100px;
-                /* Adjust size as needed */
+                width: 100px; /* Adjust size as needed */
                 height: auto;
-                margin-top: 20px;
             }
 
             nav {
