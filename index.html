@@ -766,7 +766,7 @@
             </nav>
         </div>
         <div class="warranty-message">
-            <p id="message">Free Pickups and Deliveries | 1 Year Warranty on Dentures | 6 Months Warranty on Night
+            <p id="message">Free Pickups and Deliveries| 6 Months Warranty on Night
                 Guards
             </p>
         </div>
@@ -818,15 +818,11 @@
         <section class="services">
             <div class="service">
                 <img src="./Pickup.jpg" alt="Free Pick-up, Free Delivery">
-                <p>Free Pick-up, Free Delivery</p>
+                <p>Free Pick-up, Free Delivery (Lower Mainland)</p>
             </div>
             <div class="service">
                 <img src="./Repairs.jpg" alt="Easy Repair Services">
                 <p>Easy Repair Services</p>
-            </div>
-            <div class="service">
-                <img src="./Warranty.jpg" alt="1 Year Product Warranty">
-                <p>1 Year Product Warranty</p>
             </div>
         </section>
         <section class="most-popular">
@@ -1038,22 +1034,34 @@
             const imageContainer = document.querySelector(`#${type}-description`).parentElement;
             const image = document.querySelector(`#${type}-description`).previousElementSibling;
             const description = document.querySelector(`#${type}-description`);
-
+    
+            // Remove existing blurred class and hide any existing description
+            const existingBlurredImages = document.querySelectorAll('.blurred');
+            existingBlurredImages.forEach(img => img.classList.remove('blurred'));
+    
+            const existingDescriptions = document.querySelectorAll('.description');
+            existingDescriptions.forEach(desc => {
+                desc.style.display = 'none';
+                desc.innerHTML = '';
+            });
+    
+            // Blur the image and display the description immediately
             image.classList.add('blurred');
             description.style.display = 'flex'; // Change display to flex to show the description
             description.style.width = `${image.clientWidth}px`; // Match width of image
             description.style.height = `${image.clientHeight}px`; // Match height of image
             description.style.left = '0'; // Ensure the box is aligned properly
             description.style.top = '0'; // Ensure the box is aligned properly
-
-            // Start the typing animation
-            typeText(description, text, 50, () => {
-                // Remove the description 20 seconds after typing finishes
-                setTimeout(() => {
-                    image.classList.remove('blurred');
-                    description.style.display = 'none';
-                }, 20000); // 20 seconds
-            });
+    
+            // Set the text immediately
+            description.innerHTML = text;
+    
+            // Remove the description 20 seconds later
+            setTimeout(() => {
+                image.classList.remove('blurred');
+                description.style.display = 'none';
+                description.innerHTML = '';
+            }, 20000); // 20 seconds
         }
 
         let currentProductIndex = 0;
