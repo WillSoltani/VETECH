@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Digital Scan</title>
+    <link rel="icon" href="./IC.ico" type="image/x-icon">
+
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+            background: url('./banner-image.jpg') no-repeat center center/cover;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        /* Fix header to the top */
+        header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 20px;
+            background-color: white;
+            position: relative;
+            height: auto;
+            flex-wrap: wrap;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            max-width: 150px;
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            height: 100%;
+            margin-left: auto;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+        }
+
+        .phone-number {
+            display: flex;
+            align-items: center;
+            margin-left: 200px;
+        }
+
+        .phone-number a {
+            text-decoration: none;
+            font-size: 18px;
+            color: black;
+            margin-left: 5px;
+        }
+
+        .phone-icon {
+            width: 20px;
+            height: auto;
+        }
+
+        .ic-logo {
+            width: 20px;
+            height: auto;
+        }
+
+        .itero-logo {
+            width: 20px;
+            height: auto;
+        }
+
+
+        .phone-icon {
+            width: 20px;
+            /* Adjust the size of the phone icon */
+            height: auto;
+        }
+
+        .print-rx-form {
+            display: flex;
+            align-items: center;
+            margin-left: 80px;
+            /* Spacing from the phone number */
+        }
+
+        .print-rx-form a {
+            text-decoration: none;
+            font-size: 18px;
+            color: black;
+            margin-left: 5px;
+            /* Spacing from the IC.ico logo */
+            cursor: pointer;
+        }
+
+        .ic-logo {
+            width: 20px;
+            /* Adjust the size of the IC logo */
+            height: auto;
+        }
+
+        .print-rx-form,
+        .submit-digital-case {
+            display: flex;
+            align-items: center;
+            margin-left: 50px;
+        }
+
+        .submit-digital-case a {
+            text-decoration: none;
+            font-size: 18px;
+            color: black;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+        .warranty-message {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #f0f0f0;
+            font-size: 18px;
+            color: #333;
+            position: relative;
+            height: 50px;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #f0f0f0;
+            padding: 20px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .map-box {
+            max-width: 20%;
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .map-box img {
+            width: 100%;
+            height: auto;
+            border: solid;
+            border-width: 5px;
+            border-color: bisque;
+        }
+
+        .team-box {
+            max-width: 20%;
+            flex: 1;
+            text-align: center;
+            margin-right: 20px;
+        }
+
+        .team-box img {
+            width: 100%;
+            height: auto;
+            border: solid;
+            border-width: 5px;
+            border-color: bisque;
+        }
+
+        .footer-column h3 {
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            display: block;
+            margin: 5px 0;
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+        }
+
+        .footer-copyright {
+            text-align: center;
+            font-size: 14px;
+            color: black;
+            width: 100%;
+            padding: 10px 0;
+        }
+
+        /* Container for the body split */
+        .scan-container {
+            display: flex;
+            height: 65vh;
+            background: url('./banner-image.jpg') no-repeat center center/cover;
+            margin-top: 150px;
+            padding-top: 20px;
+            /* Added padding to provide more space */
+
+        }
+
+        /* Left side */
+        .scan-left {
+            width: 50%;
+            padding: 20px;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            text-align: left;
+            position: relative;
+        }
+
+        /* Right side */
+        .scan-right {
+            width: 50%;
+            height: 100%;
+            background: url('./den3.jpg') no-repeat center center/cover;
+        }
+
+        .platforms-container h2 {
+            font-size: 28px;
+            font-weight: bold;
+            color: black;
+        }
+
+        .platform-btn {
+            background-color: #333;
+            color: white;
+            padding: 20px 30px;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        /* List items on the left with red line on selection */
+        .platforms-list {
+            display: flex;
+            flex-direction: column;
+            width: 20%;
+            padding-left: 20px;
+            margin-top: 280px;
+            height: 80vh;
+            /* Make sure the list takes full height for even spacing */
+
+
+        }
+
+        .platform-item {
+            padding: 20px;
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.3s ease;
+            font-size: 22px;
+            text-align: center;
+        }
+
+        .platform-item.selected {
+            background-color: transparent;
+            border-left: 5px solid red;
+        }
+
+        .platform-item:hover {
+            background-color: #f1f1f1;
+        }
+
+        .description-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .description-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .description-list li::before {
+            content: '•';
+            /* Red bullet point */
+            color: red;
+            position: absolute;
+            left: 0;
+            font-size: 20px;
+            top: 0;
+        }
+
+        /* Right side box for description */
+        .description-box {
+            display: none;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            /* Align description next to the platform */
+            padding: 20px;
+            margin-left: 20px;
+            /* Distance from the platform text */
+            border-left: 2px solid gray;
+            /* Vertical red line */
+            width: calc(30%);
+            /* Ensure it fits within the left side */
+            background-color: transparent;
+            /* Set background with transparency */
+
+        }
+
+        .description-box img {
+            width: 150px;
+            height: auto;
+            margin-right: 20px;
+        }
+
+        /* Show description box when platform-item is selected */
+        .platform-item.selected+.description-box {
+            display: flex;
+            border-left: 2px solid gray;
+        }
+
+        /* Adjustments for smaller devices */
+        @media (max-width: 768px) {
+
+            body,
+            html {
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+                height: 100%;
+                background: url('./banner-image.jpg') no-repeat;
+                background-size: auto 40%;
+                /* Ensure background size remains constant */
+                background-attachment: fixed;
+                padding-top: 30px;
+                overflow-x: hidden;
+                background-position: 70% right !important;
+            }
+
+            /* Adjust header for mobile */
+            .main-header {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
+
+            .logo {
+                margin-bottom: 10px;
+                /* Space between logo and other elements */
+            }
+
+            /* Phone number adjustments for mobile */
+            .phone-number {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 5px 0;
+            }
+
+            .phone-number img.phone-icon {
+                width: 15px;
+                /* Adjust icon size for mobile */
+                margin-right: 5px;
+                /* Add a little space between icon and phone number */
+            }
+
+            .phone-number a {
+                font-size: 16px;
+                /* Smaller font size for mobile */
+            }
+
+            /* Rx form and digital case submission adjustments */
+            .print-rx-form,
+            .submit-digital-case {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 5px 0;
+            }
+
+            .print-rx-form img.ic-logo,
+            .submit-digital-case img.itero-logo {
+                width: 15px;
+                /* Adjust icon size for mobile */
+                margin-right: 5px;
+                /* Add space between icon and text */
+            }
+
+            .print-rx-form a,
+            .submit-digital-case a {
+                font-size: 16px;
+                /* Smaller font size for mobile */
+            }
+
+
+            nav {
+                display: none;
+                /* Hide the regular nav menu */
+                flex-direction: column;
+                gap: 10px;
+                background-color: white;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                width: 200px;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                z-index: 9998;
+                width: 30%;
+            }
+
+            nav.show {
+                display: flex;
+                /* Show the nav when hamburger is clicked */
+            }
+
+            nav a {
+                padding: 10px;
+                text-align: center;
+                border-bottom: 1px solid #ccc;
+                font-size: 18px;
+                color: black;
+                text-decoration: none;
+            }
+
+            nav a:hover {
+                background-color: #f0f0f0;
+            }
+
+            .hamburger-menu {
+                display: flex;
+                /* Show hamburger menu on mobile */
+                flex-direction: column;
+                justify-content: space-between;
+                width: 30px;
+                height: 22px;
+                cursor: pointer;
+                z-index: 9999;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                margin-top: 10px;
+            }
+
+            .hamburger-menu .line {
+                width: 100%;
+                height: 3px;
+                background-color: black;
+                border-radius: 2px;
+            }
+
+            .platform-item.selected {
+                margin-bottom: 0;
+                background-size: auto 20%;
+                /* Remove margin under the selected item */
+            }
+
+            .description-box {
+                display: none;
+                /* Initially hidden */
+                flex-direction: column;
+                width: 100%;
+                margin-left: 0;
+                padding: 10px;
+                background-color: #f9f9f9;
+                border-left: none;
+                border-top: 1px solid #ccc;
+            }
+
+            .description-box.active {
+                display: block;
+                /* Display the dropdown when active */
+            }
+
+
+            /* Body Styling for Mobile */
+            .scan-container {
+                flex-direction: column;
+                margin-top: 140px;
+                /* Ensure content starts below header */
+                padding-top: 20px;
+                /* Add padding to the sides */
+                height: auto;
+                background-size: auto 40%;
+                /* Background remains constant */
+            }
+
+            .scan-left {
+                width: 100%;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                /* Let the height be automatic for mobile */
+            }
+
+            .scan-right {
+                display: none;
+            }
+
+            .platforms-list {
+                width: 100%;
+                padding-left: 0;
+                margin-top: 10px;
+                /* Reduced space */
+            }
+
+            .platform-item {
+                padding: 15px;
+                font-size: 18px;
+                /* Reduce font size */
+                text-align: center;
+                border-bottom: 1px solid #eee;
+
+            }
+
+            .platform-item.selected {
+                background-color: #f1f1f1;
+                border-left: none;
+            }
+
+            /* Adjust description box for mobile */
+            .description-box {
+                width: 100%;
+                margin-left: 0;
+                /* Stack content vertically */
+                padding: 15px;
+
+            }
+
+            .description-box img {
+                width: 120px;
+                /* Smaller image size */
+                margin-bottom: 10px;
+                /* Add space below image */
+            }
+
+            .description-list li {
+                font-size: 14px;
+                /* Smaller font for the description list */
+            }
+
+            /* Footer adjustments */
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-column {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 20px;
+                /* Add space between footer sections */
+            }
+
+            .map-box,
+            .team-box {
+                max-width: 100%;
+                /* Full width for maps and team images */
+            }
+
+            .team-box img,
+            .map-box img {
+                width: 100%;
+            }
+
+            .contact-box {
+                margin-bottom: 0;
+            }
+
+            .footer-copyright {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="main-header">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="./VetechLogo.jpg" alt="VeTech Logo" class="logo-image">
+                </a>
+            </div>
+            <div class="phone-number">
+                <img src="./phone-logo.webp" alt="Phone Icon" class="phone-icon">
+                <a href="tel:+16048211038">(604)821-1038</a>
+            </div>
+            <div class="print-rx-form">
+                <img src="./IC.ico" alt="IC Logo" class="ic-logo">
+                <a href="rx.html">Download Rx Form</a>
+            </div>
+            <div class="submit-digital-case">
+                <img src="./itero.png" alt="iTero Logo" class="itero-logo">
+                <a href="scan.html">Submit Digital Case</a>
+            </div>
+
+            <div class="hamburger-menu" onclick="toggleMenu()">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+
+            <nav>
+                <a href="./index.html#products-link">Solutions</a>
+                <a href="./index.html#who-we-are-link">Who We Are</a>
+                <a href="./index.html#contact-us-link">Contact Us</a>
+            </nav>
+        </div>
+        <div class="warranty-message">
+            <p id="message">Free Pickups and Deliveries | Express Deliveries</p>
+        </div>
+    </header>
+
+    <!-- Body content for scan submission -->
+    <div class="scan-container" style="background: url('./banner-image.jpg') no-repeat center center/cover;">
+        <!-- Left side list of platforms -->
+        <div class="platforms-list">
+            <div class="platform-item" onclick="selectPlatform('itero')">iTero</div>
+            <div class="platform-item" onclick="selectPlatform('3shape')">3Shape</div>
+            <div class="platform-item" onclick="selectPlatform('meditlink')">Meditlink</div>
+            <div class="platform-item" onclick="selectPlatform('shining3d')">Shining 3D</div>
+            <div class="platform-item" onclick="selectPlatform('dscore')">DScore</div>
+        </div>
+
+        <!-- Right side: Description boxes -->
+        <div id="itero-description" class="description-box">
+            <img src="./itero1.png" alt="iTero Scanner">
+            <div>
+                <h2>iTero</h2>
+                <ul class="description-list">
+                    <li>Contact Align Technology directly to add Vetech to your list of “Favorite Labs”</li>
+                    <li>Provide Vetech Lab ID as 84031</li>
+                    <li>Under settings, select “Sync Configuration”</li>
+                    <li>Transmit case scans and data by selecting “Send” on the screen</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="3shape-description" class="description-box">
+            <img src="./itero1.png" alt="3Shape Scanner">
+            <div>
+                <h2>3Shape</h2>
+                <ul class="description-list">
+                    <li>Log in to your 3Shape account</li>
+                    <li>Select the 'Send to Lab' option</li>
+                    <li>Enter Vetech Email: vetechdental@outlook.com</li>
+                    <li>Submit your scan to our lab</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="meditlink-description" class="description-box">
+            <img src="./itero1.png" alt="Meditlink Scanner">
+            <div>
+                <h2>Meditlink</h2>
+                <ul class="description-list">
+                    <li>Log in to your Meditlink account</li>
+                    <li>Select 'Send Case'</li>
+                    <li>Enter Vetech Email: vetechdental@outlook.com</li>
+                    <li>Transmit your case to us for review</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="shining3d-description" class="description-box">
+            <img src="./itero1.png" alt="Shining 3D Scanner">
+            <div>
+                <h2>Shining 3D</h2>
+                <ul class="description-list">
+                    <li>Log in to your Shining 3D account</li>
+                    <li>Select 'Send Scan'</li>
+                    <li>Enter Vetech Email: vetechdental@outlook.com</li>
+                    <li>Submit the scan to our lab</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="dscore-description" class="description-box">
+            <img src="./itero1.png" alt="DScore Scanner">
+            <div>
+                <h2>DScore</h2>
+                <ul class="description-list">
+                    <li>Log in to your DScore account</li>
+                    <li>Go to 'Submit Scan'</li>
+                    <li>Enter Vetech Email: vetechdental@outlook.com</li>
+                    <li>Send your scan for processing</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column map-box">
+                <a href="https://www.google.com/maps/place/Vetech+Dental+Laboratories+Ltd/@49.1914446,-123.084042,17z"
+                    target="_blank">
+                    <img src="./map.jpg" alt="Our Location on Google Maps" style="width:100%; height:auto;">
+                </a>
+            </div>
+            <div class="footer-column team-box">
+                <img src="./team.jpg" alt="Our Team" style="width:100%; height:auto;">
+            </div>
+            <div class="footer-column contact-box">
+                <h3>Contact Us</h3>
+                <div class="contact-detail">
+                    <h4>Email</h4>
+                    <p><a href="mailto:Vetechdental@outlook.com">Vetechdental@outlook.com</a></p>
+                </div>
+                <div class="contact-detail">
+                    <h4>Phone</h4>
+                    <p><span>+1 604-821-1038</span></p>
+                </div>
+                <div class="contact-detail">
+                    <h4>Address</h4>
+                    <p><span>12551 Vickers Way 210 V, Richmond, BC V6V 1J2</span></p>
+                    <p>(Close to Knight St Bridge)</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>&copy; 2024 Vetech Dental. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function selectPlatform(platformId) {
+            const platformItem = document.querySelector(`.platform-item[onclick="selectPlatform('${platformId}')"]`);
+            const descriptionBox = document.getElementById(`${platformId}-description`);
+
+            if (platformItem.classList.contains('selected')) {
+                // If already selected, hide the description and remove the selected class
+                platformItem.classList.remove('selected');
+                descriptionBox.style.display = 'none';
+            } else {
+                // Hide all descriptions and deselect all items
+                document.querySelectorAll('.platform-item').forEach(item => item.classList.remove('selected'));
+                document.querySelectorAll('.description-box').forEach(box => box.style.display = 'none');
+
+                // Show the clicked platform's description and add selected class
+                platformItem.classList.add('selected');
+                descriptionBox.style.display = 'flex';
+
+                // Only apply smooth scroll on mobile devices (width <= 768px)
+                if (window.innerWidth <= 768) {
+                    descriptionBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+            }
+        }
+
+
+
+        function toggleMenu() {
+            var navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('show'); /* Show or hide the menu */
+        }
+
+        document.querySelector('.hamburger-menu').addEventListener('click', function () {
+            const nav = document.querySelector('nav');
+            nav.classList.toggle('show');
+        });
+
+
+
+    </script>
+</body>
+
+</html>

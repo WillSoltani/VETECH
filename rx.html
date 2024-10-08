@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vetech Dental - RX Forms</title>
+    <link rel="icon" href="./IC.ico" type="image/x-icon">
+
+    <style>
+        /* Global Styles */
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+            background-color: #ffffff;
+        }
+
+        /* Header Styling */
+        header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 20px;
+            background-color: white;
+            position: relative;
+            height: auto;
+            flex-wrap: wrap;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            max-width: 150px;
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            height: 100%;
+            margin-left: auto;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+        }
+
+        .phone-number {
+            display: flex;
+            align-items: center;
+            margin-left: 200px;
+        }
+
+        .phone-number a {
+            text-decoration: none;
+            font-size: 18px;
+            color: black;
+            margin-left: 5px;
+        }
+
+        .phone-icon {
+            width: 20px;
+            height: auto;
+        }
+
+        .ic-logo {
+            width: 20px;
+            height: auto;
+        }
+
+        .itero-logo {
+            width: 20px;
+            height: auto;
+        }
+
+        .print-rx-form {
+            display: flex;
+            align-items: center;
+            margin-left: 80px;
+        }
+
+        .print-rx-form a {
+            text-decoration: none;
+            font-size: 18px;
+            color: black;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+        .submit-digital-case {
+            display: flex;
+            align-items: center;
+            margin-left: 50px;
+        }
+
+        .submit-digital-case a {
+            text-decoration: none;
+            font-size: 18px;
+            color: black;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            cursor: pointer;
+            z-index: 10000;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .hamburger-menu .line {
+            width: 100%;
+            height: 3px;
+            background-color: black;
+            border-radius: 2px;
+        }
+
+        /* Warranty Message Styling */
+        .warranty-message {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #f0f0f0;
+            font-size: 18px;
+            color: #333;
+            position: relative;
+            height: 50px;
+        }
+
+        /* Footer Styling */
+        footer {
+            background: #f0f0f0;
+            padding: 20px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .footer-content .footer-column {
+            padding: 10px;
+            flex: 1;
+            min-width: 200px;
+            box-sizing: border-box;
+        }
+
+        .map-box,
+        .team-box {
+            max-width: 20%;
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .contact-box {
+            max-width: 20%;
+            flex: 1;
+            margin-right: 0;
+        }
+
+        .map-box img,
+        .team-box img {
+            width: 100%;
+            height: auto;
+            border: solid 5px bisque;
+            border-radius: 5px;
+        }
+
+        .footer-column h3 {
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            display: block;
+            margin: 5px 0;
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+        }
+
+        .footer-column p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .footer-column h4,
+        .footer-column h5 {
+            margin: 10px 0 5px;
+            font-size: 18px;
+            color: #2C3E50;
+        }
+
+        .footer-copyright {
+            text-align: center;
+            font-size: 14px;
+            color: black;
+            width: 100%;
+            padding: 10px 0;
+        }
+
+        /* Main Content Styling */
+        main {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px 60px;
+            box-sizing: border-box;
+            overflow: hidden;
+            background-color: transparent;
+        }
+
+        /* Blurred Background Image Section */
+        .background-section {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('./banner25.jpg') no-repeat center center/cover;
+            background-size: 100% auto;
+            filter: blur(8px);
+            -webkit-filter: blur(6px);
+            transform: scale(1.05);
+        }
+
+        .background-section::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Content Container */
+        .content-container {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            max-width: 1200px;
+            width: 100%;
+            justify-content: center;
+            flex-wrap: wrap;
+            z-index: 1;
+        }
+
+        /* RX Form Card Styling */
+        .rx-card {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rx-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .rx-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .rx-card h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #2C3E50;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .button-group a {
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            background-color: #2C3E50;
+            color: white;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button-group a:hover {
+            background-color: #1A252F;
+            transform: scale(1.05);
+        }
+
+        /* Responsive Adjustments for Main Content */
+        @media screen and (max-width: 768px) {
+            .content-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .rx-card {
+                width: 80%;
+            }
+
+            /* Adjust header for mobile */
+            .main-header {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
+
+            .logo {
+                margin-bottom: 10px;
+            }
+
+            .phone-number {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 5px 0;
+            }
+
+            .phone-number img.phone-icon {
+                width: 15px;
+                margin-right: 5px;
+            }
+
+            .phone-number a {
+                font-size: 16px;
+            }
+
+            .print-rx-form,
+            .submit-digital-case {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 5px 0;
+            }
+
+            .print-rx-form img.ic-logo,
+            .submit-digital-case img.itero-logo {
+                width: 15px;
+                margin-right: 5px;
+            }
+
+            .print-rx-form a,
+            .submit-digital-case a {
+                font-size: 16px;
+            }
+
+            /* Adjust the margin for phone number, print-rx-form, and submit-digital-case */
+            .phone-number {
+                margin-left: 0;
+            }
+
+            .print-rx-form {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+            .submit-digital-case {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+            /* Hamburger Menu */
+            .hamburger-menu {
+                display: flex;
+            }
+
+            nav {
+                display: none;
+                flex-direction: column;
+                gap: 10px;
+                background-color: white;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                width: 200px;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                z-index: 9998;
+            }
+
+            nav.show {
+                display: flex;
+            }
+
+            nav a {
+                padding: 10px;
+                text-align: center;
+                border-bottom: 1px solid #ccc;
+                font-size: 18px;
+                color: black;
+                text-decoration: none;
+            }
+
+            nav a:hover {
+                background-color: #f0f0f0;
+            }
+
+            /* Footer Adjustments */
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-column {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .map-box,
+            .team-box {
+                max-width: 100%;
+            }
+
+            .team-box img,
+            .map-box img {
+                width: 100%;
+            }
+
+            .contact-box {
+                margin-bottom: 0;
+            }
+
+            .footer-copyright {
+                padding: 10px;
+            }
+
+            /* Adjust main padding to prevent overlap */
+            main {
+                padding: 100px 20px 60px;
+            }
+
+            /* Zoom in the background image on mobile devices */
+            .background-section {
+                background-size: 250% auto;
+                /* Increase background size to zoom in */
+                transform: scale(1.2);
+                /* Scale up the background image */
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .rx-card h2 {
+                font-size: 20px;
+            }
+
+            .button-group a {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+
+            .main-header {
+                padding: 10px 10px;
+            }
+
+            .logo img {
+                height: 40px;
+                max-width: 120px;
+            }
+
+            .footer-column h3 {
+                font-size: 22px;
+            }
+
+            .footer-column a {
+                font-size: 16px;
+            }
+
+            .footer-column p {
+                font-size: 14px;
+            }
+
+            .footer-column h4,
+            .footer-column h5 {
+                font-size: 16px;
+            }
+
+            /* Further zoom in the background image on smaller mobile devices */
+            .background-section {
+                background-size: 300% auto;
+                /* Further increase background size */
+                transform: scale(1.3);
+                /* Further scale up the background image */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Start -->
+    <header>
+        <div class="main-header">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="./VetechLogo.jpg" alt="VeTech Logo" class="logo-image">
+                </a>
+            </div>
+            <div class="hamburger-menu" onclick="toggleMenu()">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <div class="phone-number">
+                <img src="./phone-logo.webp" alt="Phone Icon" class="phone-icon">
+                <a href="tel:+16048211038">(604)821-1038</a>
+            </div>
+            <div class="print-rx-form">
+                <img src="./IC.ico" alt="IC Logo" class="ic-logo">
+                <a href="rx.html">Download Rx Form</a>
+            </div>
+            <div class="submit-digital-case">
+                <img src="./itero.png" alt="iTero Logo" class="itero-logo">
+                <a href="scan.html">Submit Digital Case</a>
+            </div>
+
+            <nav id="nav-menu">
+                <a href="./index.html#products-link">Solutions</a>
+                <a href="./index.html#who-we-are-link">Who We Are</a>
+                <a href="./index.html#contact-us-link">Contact Us</a>
+            </nav>
+        </div>
+        <div class="warranty-message">
+            <p id="message">Free Pickups and Deliveries | Express Deliveries</p>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Main Content Start -->
+    <main>
+        <!-- Blurred Background Image Section -->
+        <section class="background-section"></section>
+
+        <!-- RX Forms Content -->
+        <div class="content-container">
+            <!-- RX Form 1 -->
+            <div class="rx-card">
+                <h2>RX Form 1</h2>
+                <div class="button-group">
+                    <a href="./vetechRx.html" target="_blank">Preview</a>
+                    <a href="./VetechRx.pdf" download="VetechRx.pdf">Download</a>
+                </div>
+            </div>
+
+            <!-- RX Form 2 -->
+            <div class="rx-card">
+                <h2>RX Form 2</h2>
+                <div class="button-group">
+                    <a href="./vetechRx.html" target="_blank">Preview</a>
+                    <a href="./vetechRx.pdf" download="vetechRx.pdf">Download</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Main Content End -->
+
+    <!-- Footer Start -->
+    <footer>
+        <div class="footer-content">
+            <!-- Google Map Box -->
+            <div class="footer-column map-box">
+                <a href="https://www.google.com/maps/place/Vetech+Dental+Laboratories+Ltd/@49.1914446,-123.084042,17z/data=!4m15!1m8!3m7!1s0x548675a7ed3e0f85:0x7e64c67bad235a60!2sVetech+Dental+Laboratories+Ltd!8m2!3d49.1914446!4d-123.084042!16s%2Fg%2F1tdqzdpn!3m5!1s0x548675a7ed3e0f85:0x7e64c67bad235a60!8m2!3d49.1914446!4d-123.084042!16s%2Fg%2F1tdqzdpn?entry=ttu"
+                    target="_blank">
+                    <img src="./map.jpg" alt="Our Location on Google Maps">
+                </a>
+            </div>
+            <!-- Team Photo -->
+            <div class="footer-column team-box">
+                <img src="./team.jpg" alt="Our Team">
+            </div>
+            <!-- Contact Us -->
+            <div class="footer-column contact-box">
+                <h3>Contact Us</h3>
+                <div class="contact-detail">
+                    <h4>Email</h4>
+                    <p><a href="mailto:Vetechdental@outlook.com">Vetechdental@outlook.com</a></p>
+                </div>
+                <div class="contact-detail">
+                    <h4>Phone</h4>
+                    <p><span>+1 604-821-1038</span></p>
+                    <h5>Fax</h5>
+                    <p><span>+1 604-821-1052</span></p>
+                    <h5>Toll Free</h5>
+                    <p><span>+1 800-821-1038</span></p>
+                </div>
+                <div class="contact-detail">
+                    <h4>Address</h4>
+                    <p><span>12551 Vickers Way 210 V, Richmond, BC V6V 1J2</span></p>
+                    <p>(Close to Knight St Bridge)</p>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Copyright -->
+        <div class="footer-copyright">
+            <p>&copy; 2024 Vetech Dental. All rights reserved.</p>
+        </div>
+    </footer>
+    <!-- Footer End -->
+
+    <!-- JavaScript for Hamburger Menu -->
+    <script>
+        // Toggle Navigation Menu on Mobile
+        function toggleMenu() {
+            var navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('show');
+        }
+
+        // Close the menu when clicking outside of it
+        window.onclick = function (event) {
+            var navMenu = document.getElementById('nav-menu');
+            var hamburgerMenu = document.querySelector('.hamburger-menu');
+
+            if (event.target != navMenu && event.target != hamburgerMenu && !navMenu.contains(event.target)) {
+                navMenu.classList.remove('show');
+            }
+        }
+    </script>
+</body>
+
+</html>
